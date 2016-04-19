@@ -14,10 +14,10 @@ define(["../../js/util", "../../js/event", "../../js/comm", "../../jslib/iscroll
 			, id = obj.id
 			, isTime = obj.isTime  // 是否需要显示时间
 			, uploadmoretxt = '上拉加载更多...'
-			, pullDrefreshtxt = '努力加载中...'
+			, pullDrefreshtxt = '下拉加载更多...'
 			, clickloadmoretxt = '努力加载中...'
 			, loadertxt = '努力加载中...'
-			, Realtimetxt = '努力加载中...'
+			, Realtimetxt = '松开刷新...'
 			, loaderendtxt = '已显示完全部'
 			, uprefreshtxt = '努力加载中...'
 			, loading_gif = '<img src="../../images/loading_gif18.gif" class="loading-gif" width="28" height="28" />'

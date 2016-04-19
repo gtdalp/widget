@@ -11,14 +11,84 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="red" />
 <meta name="format-detection" content="telephone=no;address=no;email=no" />
 <link rel="stylesheet" type="text/css" href="../../css/comm.css" />
+<link rel="stylesheet" type="text/css" href="listloading.css" />
 <script src="../../jslib/zepto.min.js"></script>
 <script src="../../jslib/require.js"></script>
+<style>
+html,
+body,
+#listloading{
+    height:100%;
+    overflow:hidden;
+}
+#list{
+    border-top:1px solid #ccc;
+}
+#list>li{
+    height:45px;
+    line-height:45px;
+    padding:0 15px;
+    border-bottom:1px solid #ccc;
+    color:#666;
+    font-size:14px;
+}
+#list>li>span:first-child{
+    float:left;
+    width:150px;
+}
+</style>
 <script>
-require(['listloading', "../../js/comm"], function (util, comm) {
-    console.log(comm)
+require(["listloading", "../../js/comm", "../../jslib/juicer"], function (listloading, comm) {
+    var getData = function(status){
+        $.ajax({
+            url: "json.json",
+            type: 'get',
+            success: function(data){
+                var data = {
+                    list: JSON.parse(data)
+                }
+                var tmp = '{@each list as it}\
+                    <li>\
+                        <span>\
+                            ${it.queryLeftNewDTO.start_station_name} -> ${it.queryLeftNewDTO.end_station_name}\
+                        </span> \
+                        <span>历时：${it.queryLeftNewDTO.lishi}</span>\
+                        <span class="r">列车：${it.queryLeftNewDTO.station_train_code}</span>\
+                    </li>\
+                {@/each}';
+                var html = juicer(tmp, data);
+                if(status === "pullUp"){
+                    var flg = true;
+                    $('#list').append(html);
+                    publishEvents.trigger(status, {end: flg});
+                }else{
+                    $('#list').html(html);
+                    publishEvents.trigger(status);
+                }
+            }
+        });
+    }
+    var publishEvents = comm.publishEvents;
+    listloading.setOption({
+        id: '#listloading',   // id iscroll
+        defaultLoader: function () {   // 第一次加载数据
+            getData('defaultLoader');            
+        },
+        pullUpAction: function () {   //上拉加载更多
+            getData('pullUp');
+        },
+        pullDownAction: function () {  //下拉刷新
+            getData('pullDown');
+        }
+    });
 });
 </script>
 </head>
 <body>
+<section id="listloading">
+    <article>
+        <ul id="list"></ul>
+    </article>
+</section>
 </body>
 </html>

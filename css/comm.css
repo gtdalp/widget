@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(base.css);
 /*function css*/
 .rel{
     position:relative;

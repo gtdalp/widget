@@ -58,8 +58,11 @@ require(["listloading", "../../js/comm", "../../jslib/juicer"], function (listlo
                 {@/each}';
                 var html = juicer(tmp, data);
                 if(status === "pullUp"){
+                    // flg为true 则是数据已经拉取完毕
                     var flg = true;
-                    $('#list').append(html);
+                    if(!flg){
+                        $('#list').append(html);
+                    }
                     publishEvents.trigger(status, {end: flg});
                 }else{
                     $('#list').html(html);

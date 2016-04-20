@@ -162,10 +162,13 @@ define(["../../js/util", "../../js/event", "../../js/comm", "../../jslib/iscroll
 						// 设置class和提示
 						__toggleTextFn(pullUpEl, '', 'pullUpLabel', uploadmoretxt);
 					}
-
 				});
 				// 结束
 				listLoadingIscroll.on('scrollEnd', function(){
+					// 滚动到底自动加载更多
+					if(this.y === this.maxScrollY && pullUpEl){
+						__toggleTextFn(pullUpEl, 'flip', 'pullUpLabel', Realtimetxt);
+					}
 					__timeEnd = new Date().getTime();
 					__totaltime = __timeEnd - __timeStart;
 					__endDate = Date.parse(new Date());
@@ -183,7 +186,6 @@ define(["../../js/util", "../../js/event", "../../js/comm", "../../jslib/iscroll
 						}
 						return false;
 					}
-
 					if (pullDownEl.hasClass('flip')) {
 						// 设置class和提示
 						__toggleTextFn(pullDownEl, 'loading', 'pullDownLabel', loadertxt);	

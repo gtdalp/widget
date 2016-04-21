@@ -5,7 +5,6 @@
 <title>listloading</title>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="red" />
@@ -47,14 +46,14 @@ require(["listloading", "../../js/comm", "../../jslib/juicer"], function (listlo
                 var data = {
                     list: JSON.parse(data)
                 }
-                var tmp = '{@each list as it}\
-                    <li>\
+                var tmp = '{@each list as it, index}\
+                    {@if index>26}<li>\
                         <span>\
                             ${it.queryLeftNewDTO.start_station_name} -> ${it.queryLeftNewDTO.end_station_name}\
                         </span> \
                         <span>历时：${it.queryLeftNewDTO.lishi}</span>\
                         <span class="r">列车：${it.queryLeftNewDTO.station_train_code}</span>\
-                    </li>\
+                    </li>{@/if}\
                 {@/each}';
                 var html = juicer(tmp, data);
                 if(status === "pullUp"){
@@ -74,6 +73,7 @@ require(["listloading", "../../js/comm", "../../jslib/juicer"], function (listlo
     var publishEvents = comm.publishEvents;
     listloading.setOption({
         id: '#listloading',   // id iscroll
+        isTime: true,
         defaultLoader: function () {   // 第一次加载数据
             getData('defaultLoader');            
         },

@@ -1,0 +1,116 @@
+#Alert,
+#Alert::before{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+#Alert{
+	z-index:100;
+	text-align:center;
+}
+#Alert::before{
+	display:block;
+	z-index:2;
+	content:'';
+}
+#AlertDialog{
+	position:relative;
+	top:50%;
+	z-index:3;
+	margin:20px 30px;
+	padding:10px 15px 15px;
+	background:#fff;
+}
+#AlertDialogH3{
+	height:50px;
+	line-height:50px;
+	font-size:16px;
+	color:#525252;
+}
+#AlertDialogH3,
+#AlertDialogbtn>a{
+	white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+#AlertDialogcont{
+	line-height:20px;
+	font-size:12px;
+	color:#999;
+	word-break:break-all;
+　　word-wrap:break-word;
+}
+#AlertDialogbtn{
+	display:flex;
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:-o-flex;
+	margin-top:25px;
+}
+#AlertDialogbtn>a{
+	display:block;
+	flex:1;
+	height:40px;
+	line-height:40px;
+	margin:0 7px;
+	font-size:14px;
+	color:#fff;
+	background:#2DBE60;
+}
+#AlertDialogbtn>a:first-child{
+	margin-left:0;
+}
+#AlertDialogbtn>a:last-child{
+	margin-right:0;
+}
+#AlertDialogbtn>a.cancel{
+	background:#CECECE;
+}
+#Alert.in::before{
+	-webkit-animation: AlertIn .8s forwards;
+	-moz-animation: AlertIn .8s forwards;
+	-o-animation: AlertIn .8s forwards;
+	animation: AlertIn .8s forwards;
+}
+@-webkit-keyframes AlertIn {
+  from {background: rgba(0,0,0,0);}
+	to {background: rgba(0,0,0,.5);}
+}
+@-moz-keyframes AlertIn {
+  from {background: rgba(0,0,0,0);}
+	to {background: rgba(0,0,0,.5);}
+}
+
+@-o-keyframes AlertIn {
+  from {background: rgba(0,0,0,0);}
+	to {background: rgba(0,0,0,.5);}
+}
+@keyframes AlertIn {
+  from {background: rgba(0,0,0,0);}
+	to {background: rgba(0,0,0,.5);}
+}
+#Alert.out::before{
+	-webkit-animation: AlertOut .8s forwards;
+	-moz-animation: AlertOut .8s forwards;
+	-o-animation: AlertOut .8s forwards;
+	animation: AlertOut .8s forwards;
+}
+@-webkit-keyframes AlertOut {
+  from {background: rgba(0,0,0,.5);}
+	to {background: rgba(0,0,0,0);}
+}
+@-moz-keyframes AlertOut {
+  from {background: rgba(0,0,0,.5);}
+	to {background: rgba(0,0,0,0);}
+}
+
+@-o-keyframes AlertOut {
+  from {background: rgba(0,0,0,.5);}
+	to {background: rgba(0,0,0,0);}
+}
+@keyframes AlertOut {
+  from {background: rgba(0,0,0,.5);}
+	to {background: rgba(0,0,0,0);}
+}

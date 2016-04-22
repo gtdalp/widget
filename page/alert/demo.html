@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>alert</title>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="red" />
+<meta name="format-detection" content="telephone=no;address=no;email=no" />
+<link rel="stylesheet" type="text/css" href="../../css/comm.css" />
+<link rel="stylesheet" type="text/css" href="alert.css" />
+<script src="../../jslib/zepto.min.js"></script>
+<script src="../../jslib/require.js"></script>
+<script>
+require(['alert'], function(Alert) {
+	var alertFn = function(){
+		Alert({
+			title : '确定要取消吗？',   // title
+			content: '取消之后不能撤销了，请考虑考虑...',
+			// buttons: [
+			// 	{
+			// 		text: '自定义按钮',
+			// 		cls: '',   // 自定义class
+			// 		fn: function(){
+			// 			// return false;  // 返回false则不关闭弹出框 默认可以不写
+			// 		}
+			// 	}
+			// ],
+			
+			// cancel: function(){ // 取消回调
+			// 	//
+			// },
+			// ok: function(){  // 确定回调
+			// 	return true;
+			// }
+		});
+	}
+	alertFn();
+	$('#click').click(function(){
+		alertFn();
+	});
+});
+</script>
+</head>
+<body>
+<style type="text/css">
+html,body{
+	height:100%;
+	text-align:center;
+}
+#click{
+	position:relative;
+	top:25%;
+	font-size: 50px;
+	color:#535353;
+}
+</style>
+<a href="javascript:void(0);" id="click">click me</a>
+</body>
+</html>

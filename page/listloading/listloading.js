@@ -20,7 +20,7 @@ define(["../../js/util", "../../js/event", "../../js/comm", "../../jslib/iscroll
 			, Realtimetxt = '松开刷新...'
 			, loaderendtxt = '已显示完全部'
 			, uprefreshtxt = '努力加载中...'
-			, loading_gif = '<img src="../../images/loading_gif18.gif" class="loading-gif" width="28" height="28" />'
+			, loading_gif = '<img src="../../images/wheel.gif" class="loading-gif" width="28" height="28" />'
 			, __flg = true   // 防止多次拖拽
 			, __idHeight = $(id).height()
 			, __endDate = Date.parse(new Date())

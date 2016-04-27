@@ -1,0 +1,30 @@
+#popup{
+   position: absolute;
+   top:0;
+   left:0; 
+}
+#popup>.tips{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    min-height: 40px;
+    padding:0 15px;
+    font-size:14px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    background: rgba(51,51,51,0.6);
+    z-index: 1000;
+    word-break:break-all;
+　　word-wrap:break-word;
+}
+#popup::after{
+    display:block;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0);
+    content:'';
+}

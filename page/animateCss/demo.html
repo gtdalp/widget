@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>animatecss</title>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="red" />
+<meta name="format-detection" content="telephone=no;address=no;email=no" />
+<link rel="stylesheet" type="text/css" href="../../css/comm.css" />
+<link rel="stylesheet" type="text/css" href="../../css/animate.css" />
+<script src="../../jslib/zepto.min.js"></script>
+</head>
+<body>
+<style type="text/css">
+body{
+	padding:30px;
+}
+#animate{
+	width:1000px;
+	margin:150px auto;
+	font-size:14px;
+}
+.animate-h3{
+	height:70px;
+	text-align:center;
+	font-size:50px;
+	color:#00264D;
+}
+.animate-select{
+	margin-top:150px;
+	padding:10px;
+	border:1px solid #FF6400;
+	border-bottom:none;
+	overflow:hidden;
+}
+.animate-select>span,
+.animate-select-tab>li>span{
+	float:left;
+	height:50px;
+	line-height:50px;
+	padding:0 15px;
+	margin:0 10px 10px 0;
+	text-align:center;
+	background:#666;
+	color:rgba(255,255,255,.85);
+	cursor:pointer;
+}
+.animate-select>span.active,
+.animate-select-tab>li>span.active{
+	background:#F35626;
+}
+.animate-select-tab{
+	padding:10px;
+	border:1px solid #FF6400;
+}
+.animate-select-tab>li{
+	height:200px;
+	padding-top:10px;
+	display:none;
+	overflow:hidden;
+}
+.animate-select-tab>li.active{
+	display:block;
+}
+</style>
+<section id="animate">
+	<h3 class="animate-h3 animated">Animate.css</h3>
+	<div class="animate-select">
+		<span class="active">Attention Seekers</span>
+		<span>Bouncing Entrances</span>
+		<span>Bouncing Exits</span>
+		<span>Fading Entrances</span>
+		<span>Fading Exits</span>
+		<span>Flippers</span>
+		<span>Lightspeed</span>
+		<span>Rotating Entrances</span>
+		<span>Rotating Exits</span>
+		<span>Sliding Entrances</span>
+		<span>Sliding Exits</span>
+		<span>Zoom Entrances</span>
+		<span>Zoom Exits</span>
+		<span>Specials</span>
+	</div>
+	<ul class="animate-select-tab">
+		<li class="active">
+			<span data-cls="bounce">bounce</span>
+			<span data-cls="flash">flash</span>
+			<span data-cls="pulse">pulse</span>
+			<span data-cls="rubberBand">rubberBand</span>
+			<span data-cls="shake">shake</span>
+			<span data-cls="swing">swing</span>
+			<span data-cls="tada">tada</span>
+			<span data-cls="wobble">wobble</span>
+			<span data-cls="jello">jello</span>
+		</li>
+		<li>
+			<span data-cls="bounceIn">bounceIn</span>
+			<span data-cls="bounceInDown">bounceInDown</span>
+			<span data-cls="bounceInLeft">bounceInLeft</span>
+			<span data-cls="bounceInRight">bounceInRight</span>
+			<span data-cls="bounceInUp">bounceInUp</span>
+        </li>
+        <li>
+			<span data-cls="bounceOut">bounceOut</span>
+			<span data-cls="bounceOutDown">bounceOutDown</span>
+			<span data-cls="bounceOutLeft">bounceOutLeft</span>
+			<span data-cls="bounceOutRight">bounceOutRight</span>
+			<span data-cls="bounceOutUp">bounceOutUp</span>
+        </li>
+        <li>
+			<span data-cls="fadeIn">fadeIn</span>
+			<span data-cls="fadeInDown">fadeInDown</span>
+			<span data-cls="fadeInDownBig">fadeInDownBig</span>
+			<span data-cls="fadeInLeft">fadeInLeft</span>
+			<span data-cls="fadeInLeftBig">fadeInLeftBig</span>
+			<span data-cls="fadeInRight">fadeInRight</span>
+			<span data-cls="fadeInRightBig">fadeInRightBig</span>
+			<span data-cls="fadeInUp">fadeInUp</span>
+			<span data-cls="fadeInUpBig">fadeInUpBig</span>
+        </li>
+        <li>
+			<span data-cls="fadeOut">fadeOut</span>
+			<span data-cls="fadeOutDown">fadeOutDown</span>
+			<span data-cls="fadeOutDownBig">fadeOutDownBig</span>
+			<span data-cls="fadeOutLeft">fadeOutLeft</span>
+			<span data-cls="fadeOutLeftBig">fadeOutLeftBig</span>
+			<span data-cls="fadeOutRight">fadeOutRight</span>
+			<span data-cls="fadeOutRightBig">fadeOutRightBig</span>
+			<span data-cls="fadeOutUp">fadeOutUp</span>
+			<span data-cls="fadeOutUpBig">fadeOutUpBig</span>
+        </li>
+        <li>
+			<span data-cls="flip">flip</span>
+			<span data-cls="flipInX">flipInX</span>
+			<span data-cls="flipInY">flipInY</span>
+			<span data-cls="flipOutX">flipOutX</span>
+			<span data-cls="flipOutY">flipOutY</span>
+        </li>
+
+        <li>
+			<span data-cls="lightSpeedIn">lightSpeedIn</span>
+			<span data-cls="lightSpeedOut">lightSpeedOut</span>
+        </li>
+        <li>
+			<span data-cls="rotateIn">rotateIn</span>
+			<span data-cls="rotateInDownLeft">rotateInDownLeft</span>
+			<span data-cls="rotateInDownRight">rotateInDownRight</span>
+			<span data-cls="rotateInUpLeft">rotateInUpLeft</span>
+			<span data-cls="rotateInUpRight">rotateInUpRight</span>
+        </li>
+        <li>
+			<span data-cls="rotateOut">rotateOut</span>
+			<span data-cls="rotateOutDownLeft">rotateOutDownLeft</span>
+			<span data-cls="rotateOutDownRight">rotateOutDownRight</span>
+			<span data-cls="rotateOutUpLeft">rotateOutUpLeft</span>
+			<span data-cls="rotateOutUpRight">rotateOutUpRight</span>
+        </li>
+        <li>
+			<span data-cls="slideInUp">slideInUp</span>
+			<span data-cls="slideInDown">slideInDown</span>
+			<span data-cls="slideInLeft">slideInLeft</span>
+			<span data-cls="slideInRight">slideInRight</span>
+        </li>
+        <li>
+			<span data-cls="slideOutUp">slideOutUp</span>
+			<span data-cls="slideOutDown">slideOutDown</span>
+			<span data-cls="slideOutLeft">slideOutLeft</span>
+			<span data-cls="slideOutRight">slideOutRight</span>
+        </li>
+        <li>
+			<span data-cls="zoomIn">zoomIn</span>
+			<span data-cls="zoomInDown">zoomInDown</span>
+			<span data-cls="zoomInLeft">zoomInLeft</span>
+			<span data-cls="zoomInRight">zoomInRight</span>
+			<span data-cls="zoomInUp">zoomInUp</span>
+        </li>
+        <li>
+			<span data-cls="zoomOut">zoomOut</span>
+			<span data-cls="zoomOutDown">zoomOutDown</span>
+			<span data-cls="zoomOutLeft">zoomOutLeft</span>
+			<span data-cls="zoomOutRight">zoomOutRight</span>
+			<span data-cls="zoomOutUp">zoomOutUp</span>
+        </li>
+        <li>
+			<span data-cls="hinge">hinge</span>
+			<span data-cls="rollIn">rollIn</span>
+			<span data-cls="rollOut">rollOut</span>
+        </li>
+	</ul>
+</section>
+<script>
+$(function(){
+	$('.animate-select>span').click(function(){
+		var len = $('.animate-h3').attr('class').length;
+		if(len === 19){
+			var index = $(this).index();
+			$(this).addClass('active').siblings().removeClass('active');
+			$('.animate-select-tab>li').eq(index).addClass('active').siblings().removeClass('active');
+		}
+	});
+	$('.animate-select-tab>li>span').click(function(){
+		var len = $('.animate-h3').attr('class').length;
+		if(len === 19){
+			$('.animate-select-tab>li>span').removeClass('active');
+			var index = $(this).index();
+			$(this).addClass('active').siblings();
+			var cls = $(this).attr('data-cls');
+			$('.animate-h3').addClass(cls);
+			setTimeout(function(){
+				$('.animate-h3').attr('class', 'animate-h3 animated');
+			}, 2500);
+		}
+		
+	});
+});
+</script>
+</body>
+</html>

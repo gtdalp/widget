@@ -31,6 +31,7 @@ define(["../../js/util", "../../js/event", "../../js/comm", "../../jslib/iscroll
 			, pullUpId = 'pullUp-' + _idReplace
 			, pullDownId = 'pullDown-' + _idReplace
 			, clickDownId = 'clickDown-' + _idReplace
+			, pubtimeStart
 			;
 			publishEvents.remove('defaultLoader');
 			publishEvents.remove('pullUp');
@@ -123,6 +124,7 @@ define(["../../js/util", "../../js/event", "../../js/comm", "../../jslib/iscroll
 				// 开始
 				listLoadingIscroll.on('scrollStart', function(){
 					__timeStart = new Date().getTime();
+					pubtimeStart = __timeStart;
 					$('#' + pullUpId + ' .loading-gif').removeClass('dn');
 					// 时间
 					if(isTime && timeDifference) $('#time-em').html(timeDifference(__endDate));
@@ -207,58 +209,43 @@ define(["../../js/util", "../../js/event", "../../js/comm", "../../jslib/iscroll
 			}
 			// 上拉加载更多
 			var __pullUpAction = function(){
-				if( $.isFunction(obj.pullUpAction) && __flg ) {
+				// 防止暴力拖拽
+				var _time = new Date().getTime()-pubtimeStart;
+				if( $.isFunction(obj.pullUpAction) && _time >= 400 ) {
 					publishEvents.listen('pullUp', function(data){
-						// console.log(data)
 						var loaderText = loaderendtxt;
 						// 数据全部加载完毕
-						if( data != undefined && data.end ){
+						if( data.end ){
 							pullUpEl.find('.loading-gif').addClass('dn');
-							// 复位
-							count++;
-							setTimeout(function(){
-								if(--count !== 0) return;
-								__animateFn(listLoadingIscroll.y + pullUpOffset);
-							}, 700);								
+							__animateFn(listLoadingIscroll.y + pullUpOffset);
 						}else{
 							loaderText = uploadmoretxt;
 						}
-						pullUpEl.find('.pullUpLabel').text(loaderText);
+						pullUpEl.find('.pullUpLabel').html(loaderText);
 						// 数据加载完成后，调用界面更新方法
 						listLoadingIscroll.refresh();
 						publishEvents.remove('pullUp');
-						// 防止多次拖拽
-						__flg = true; 
 					});
 					obj.pullUpAction();
-				}
-				// 防止多次拖拽
-				__flg = false; 
+				} 
 			}
 			// 下拉刷新
 			var __pullDownAction = function() {
-				if( $.isFunction(obj.pullDownAction) && __flg ) {
-					publishEvents.listen('pullDown',function(data){
-						if( pullUpEl ) pullUpEl.find('.pullUpLabel').text(uploadmoretxt);
-						// 复位
-						count++;
+				// 防止暴力拖拽
+				var _time = new Date().getTime()-pubtimeStart;
+				if( $.isFunction(obj.pullDownAction) && _time >= 400 ) {
+					publishEvents.listen('pullDown',function(){
+						if( pullUpEl ) pullUpEl.find('.pullUpLabel').html(uploadmoretxt);
 						// 是否显示上拉加载更多
 						__isShowRefreshDow();
-						setTimeout(function(){
-							if(--count !== 0) return;
-							__animateFn(-pullDownOffset);
-						}, 10);
+						__animateFn(-pullDownOffset);
 						// 数据加载完成后，调用界面更新方法
 						listLoadingIscroll.refresh();
 						// 删除
 						publishEvents.remove('pullDown');
-						// 防止多次拖拽
-						__flg = true; 
 					});
 					obj.pullDownAction();
-				}
-				// 防止多次拖拽
-				__flg = false; 
+				} 
 			}
 			// 默认加载
 			if( $.isFunction(obj.defaultLoader) ){
